@@ -1,0 +1,59 @@
+<section th:fragment="navbar-insumos" id="navbar-insumos">
+    <nav class="navbar bg-body-tertiary mt-2">
+        <div class="container-fluid">
+            <a th:href="@{/}" class="navbar-brand "><i class="fa-solid fa-house me-5 ms-5 fs-1"></i></a>
+            <div>
+                <div>
+                    <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" 
+                            id="btn-edicion" class="btn  ms-5" data-bs-toggle="modal"
+                            data-bs-target="#agregarModal">
+                        <i class="fas fa-edit fa-lg"></i> [[#{insumos.navbar.editarCrar}]]
+                    </button>
+                    <a th:href="@{/imprimir-listado}" id="btn-upload" class="btn btn-light ms-5 "> 
+                        <i class="fa-solid fa-download fa-lg"></i> [[#{insumos.navbar.imprimir}]]</a>
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <div class="dropdown ps-3">
+                    <!-- FILTROS -->
+                    <section th:replace="~{layout/insumos/filtros :: filtros}"></section>
+
+                </div>
+                <div class="dropdown pe-3 ps-3">
+                    <button  class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-object-group"></i> [[#{insumos.navbar.agrupar}]]
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="javascript:agrupar(6)">Agrupar</a></li>
+                        <li><a class="dropdown-item" href="#">Action two</a></li>
+                        <li><a class="dropdown-item" href="#">Action three</a></li>
+                    </div>
+                </div>
+            </div>
+            <div class="container" th:if="${alertaMensaje == true}">
+                <div class="row">
+                    <div class="alert alert-warning" role="alert">
+                        <div class="row">
+                            <div class="col-11">
+                                <h4 class="alert-heading">Aviso!</h4>
+                            </div>
+                            <div class="col-1">
+                                <a th:href="@{/cerrar-alerta}"  class="btn-close ms-5 fs-2"></a>
+                            </div>
+                            <p>[[#{insumos.navbar.alertaTitulo}]]</p>
+                        </div>
+                        <hr>
+                        <p class="mb-0">
+                            [[#{insumos.navbar.alertapart1}]] <br/>
+                            [[#{insumos.navbar.alertapart2}]]<br/>
+                            [[#{insumos.navbar.alertapart3}]]<br/>
+                            [[#{insumos.navbar.alertapart4}]] 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <hr/>
+</section>

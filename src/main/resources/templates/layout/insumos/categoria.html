@@ -1,0 +1,103 @@
+<section th:fragment="categoria-details" id="categoria">
+    <br/>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4">
+                <input class="btn-check" type="radio" name="accion" value="Crear" id="rBtnCrear" onchange="mostrarForm()"/>
+                <label class="btn btn-light custom-btn-label" for="rBtnCrear"> <i class="fas fa-plus-circle me-2"></i>Crear</label>
+            </div> 
+            <div class="col-md-4">
+                <input class="btn-check" type="radio" name="accion" value="Actualizar" id="rBtnActualizar" onchange="mostrarForm()"/>
+                <label class="btn btn-light custom-btn-label" for="rBtnActualizar"> <i class="fas fa-sync-alt me-2"></i>Actualizar</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- FORM CATEGORIA NUEVA -->
+        <div id="formNueva" style="display: none;">
+            <hr/>
+            <div class="container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <form th:action="@{/crearCategoria}">
+                                <div class="col-12">
+                                    <label for="nombreCategoria" class="form-label">Nombre</label>
+                                    <input type="text" name="nombreCategoria" class="form-control" id="nombreCategoria" aria-describedby="ayudaNombre" required>
+                                    <div id="ayudaNombre" class="form-text">Ingrese el nombre para la nueva categoria</div>
+                                </div>
+                                <div class=" mt-3 d-grid">
+                                    <button type="submit" id="btn-verdes" class="btn rounded-5 m-2 fs-5">Crear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <!-- FORM ACTUALIZAR O ELIMINAR CATEGORIA -->
+        <div id="formActualizar" style="display: none;"> 
+
+            <div class="container mt-3">
+                <div class ="row d-flex justify-content-center">
+                    <div class="col-md-5">
+                        <div class="dropdown ps-2">
+                            <button class="btn dropdown-toggle ms-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                CATEGORIAS
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li th:each="categoria : ${session.categorias}">
+                                    <button class="dropdown-item" th:onclick="seleccionoCategoria(this)" th:value="${categoria.getIdCategoria()}"
+                                            th:text="${categoria.getNombre_categoria()}">
+                                    </button>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class ="row d-flex justify-content-center">
+                    <div id="cat-check" style="display: none;" class="ms-2 col-md-10">
+
+                        <form method="POST" action="/updateCategoria" >
+                            <div class="mb-3">
+                                <label for="textId" class="form-label">ID: </label><br/>
+                                <input  class="form-control" type="text" name="idUpdate" readOnly id="textId"></input>
+
+                                <label for="nombreCat-Upd" class="form-label">Nombre</label>
+                                <input type="text" name="nombreUpdate" class="form-control" id="nombreCat-Upd" aria-describedby="ayudaNombre" required>
+                                <div id="ayudaNombre" class="form-text">Ingrese los cambios en  el nombre para la categoria</div>
+                            </div>
+                            <div class="row d-flex justify-content-center ms-2">
+                                <div class="col-5">
+                                    <button type="submit" id="btn-verdes" class="btn"><i class="fas fa-sync-alt fa-lg"></i>  Actualizar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form method="POST" action="/eliminarCategoria">
+                            <div class="row d-flex justify-content-center ms-2">
+                                <div class="col-5 mt-3">
+                                    <input  type="hidden" name="idEliminar" readOnly id="IdEliminarCat"></input>
+                                    <button type="submit" id="btn-eliminar" class="btn btn-outline-danger ps-4 pe-4"><i class="fas fa-trash-alt fa-lg"></i>  Eliminar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="ms-2 col-md-12 ">
+                        <div id="cat-uncheck" style="display: block;">
+                            <div class="alert alert-light text-center" role="alert">
+                                ...NO SELECCIONO NINGUNA CATEGORIA...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:fragment="head">
+        <title>UltraFibra</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <!--script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script-->
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="stylesheet" type="text/css" href="/webjars/datatables/1.11.3/css/dataTables.bootstrap5.min.css" ></link>
+        <script type="text/javascript" src="/webjars/datatables/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="/webjars/datatables/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/></link>
+        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+        <link href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/rg-1.3.1/datatables.min.css" rel="stylesheet"/></link>
+        <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/rg-1.3.1/datatables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.3/css/rowGroup.dataTables.min.css"></link>
+        <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.3/js/dataTables.rowGroup.min.js"></script>
+        <link href="https://fonts.cdnfonts.com/css/proxima-nova-condensed" rel="stylesheet"></link>
+        <link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
+        <script type="text/javascript" th:src="@{/Js/funciones.js}"></script>
+        <script type="text/javascript" src="/home/c1901029/utilidades/utilidades_ultra_v1.0/classes/static/Js/funciones.js"></script>
+        <script type="text/javascript" th:src="@{/home/c1901029/utilidades/utilidades_ultra_v1.0/classes/static/Js/funciones.js}"></script>
+        <script type="text/javascript" th:src="@{/Js/scriptsInsumos.js}"></script>
+
+        <style>
+            #loading-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+
+            #spinner {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                z-index: 1000;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body id="bg-body">
+        <!--------------------------------------- Plantilla de Header ---------------------------------------------------->
+        <header th:fragment="header">
+            
+
+            <section th:replace="~{layout/spinner :: spinner-frag}"></section>
+            <section id="main-header" class="py-4 text-white">
+                <div id="div-header" class="container-fluid">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col ms-5">
+                            <img id="img-logo" th:src="@{/img/UltraFIbra.png}" alt="Texto alternativo"/>
+                        </div>
+                        <div class="col me-5">
+                            <nav class="navbar navbar-expand-lg p-3">
+                                <div class="container-fluid">
+                                    <form method="POST" th:action="@{/logout}" class="d-flex ms-auto" role="search">    
+                                        <div class="mt-2 me-2">
+                                            <b class="mt-2 fs-5"><i class="fas fa-user"></i></b> 
+                                            <span id="nombre-usuario" class="mt-2 me-2 fs-5" sec:authentication="name"> Usuario Logueado</span>
+                                        </div>
+                                        <div>
+                                            <a id="btn-cerrarSesion" class="btn btn-outline-light rounded-5 me-2" href="#" onclick="this.parentNode.submit();"> 
+                                                <i class="fas fa-sign-out-alt"></i> [[#{plantilla.cerrarsesion}]]</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <!--------------------------------------- Plantilla de Footer ---------------------------------------------------->
+        <footer th:fragment="footer" id="footer-plantilla">
+            <div class="footer-background">
+                <div class="container-fluid">
+                    <div class="container pe-5">
+                        <div class="row pt-4 me-5">
+                            <div class="col-md-4 d-flex align-items-center justify-content-end">
+                                <img id="img-logo-footer" th:src="@{/img/UltraFibra_Azul.png}" alt="Texto alternativo"/>
+                            </div>
+                            <div class="col-md-8 pt-4">
+                                <div class="row">
+                                    <div class="col-12 align-items-end justify-content-end fs-2 fst-italic fw-bold" style="letter-spacing: 4.5px;">
+                                        COPYRIGHT MEGALINK SRL
+                                    </div>
+                                </div>
+                                <div class="row fst-italic">
+                                    <p style="letter-spacing: 5px;">DESARROLLADO POR NAZARENO LORENZATTI </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div>
+                        <form method="POST" th:action="@{/logout}" class="d-flex justify-content-between">
+                            <div>
+                                <a href="?lang=es">Español</a> ||
+                                <a href="?lang=en">English</a> ||
+                                <a href="#" onclick="this.parentNode.submit();">[[#{plantilla.cerrarsesion}]]</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

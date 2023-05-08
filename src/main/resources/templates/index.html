@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Index</title>
+    </head>
+
+    <body id="bg-body">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <div class="container overflow-hidden">     
+            <div id="container-border" class="row p-1"></div>
+            <div class="row mt-5 me-5 mb-5">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 p-3 d-flex align-items-center justify-content-center">
+                        <h3 id="section">[[#{index.seccion1}]]</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class="text-left">
+                            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/comercial/homebankingLink}" class="btn btn-lg " id="boton">
+                                <div class="fs-1">
+                                    <i class="fas fa-file-invoice-dollar fa-2x m-2"></i>
+                                </div>
+                                <div class="m-3">
+                                    Homebanking Link
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class=" text-left">
+                            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/comercial/homebankingBanelco}" class="btn btn-lg" id="boton">
+                                <div class="fs-1">
+                                    <i class="fas fa-university fa-2x  m-2"></i>
+                                </div>
+                                <div class="m-3">
+                                    Homebanking Banelco
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class="text-left">
+                            <a  sec:authorize="hasRole('ROLE_USER')" th:href="@{/comercial/sirplus}" class="btn btn-lg " id="boton">
+                                <div class="fs-1">
+                                    <i class="fas fa-file-code fa-2x ms-5 me-5 mt-3 mb-2"></i>
+                                </div>
+                                <div class="m-3">
+                                    Sirplus
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <br/>
+                    <hr id="hr" />
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 p-3 d-flex align-items-center justify-content-center">
+                        <h3 id="section">[[#{index.seccion2}]]</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class="text-left">
+                            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/comercial/debitosAutomaticos}" class="btn btn-lg" id="boton">
+                                <div class="fs-1">
+                                    <i class="fa-solid fa-building-columns fa-2x m-2"></i>
+                                </div>
+                                <div class="m-3">
+                                    [[#{index.boton.debitos}]]
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class="text-left">
+                            <a sec:authorize="hasRole('ROLE_USER')" th:href="@{/comercial/macroClick}" class="btn btn-lg" id="boton">
+                                <div class="fs-1">
+                                    <i class="fas fa-money-check-alt fa-2x ms-5 me-5 mt-4 mb-2"></i> 
+                                </div>
+                                <div class="m-3"> 
+                                    Macro Click 
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div sec:authorize="hasRole('ROLE_USER')" class="row">
+                    <br/>
+                    <hr id="hr"/>
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 p-3 d-flex align-items-center justify-content-center">
+                        <h3 id="section">[[#{index.seccion3}]]</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class="align-self-center">
+                            <a   th:href="@{/insumos/insumos}" class="btn btn-lg" id="boton">
+                                <div class="fs-1">
+                                    <i class="fas fa-boxes fa-2x m-2 rounded-circle"></i>
+                                </div>
+                                <div class="m-3">
+                                    [[#{index.boton.inventario}]]
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div sec:authorize="hasRole('ROLE_SUPPORT')" class="row">
+                    <br/>
+                    <hr id="hr"/>
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 p-3 d-flex align-items-center justify-content-center">
+                        <h3 id="section">[[#{index.seccion3}]]</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3 d-flex">
+                        <div class="align-self-center">
+                            <a  th:href="@{/alertas/alertas}" class="btn btn-lg" id="boton">
+                                <div class="fs-1">
+                                    <i class="fa-solid fa-bell fa-2x ms-5 me-5 mt-3 mb-2"></i>
+                                </div>
+                                <div class="m-3">
+                                    [[#{index.boton.alertas}]]
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

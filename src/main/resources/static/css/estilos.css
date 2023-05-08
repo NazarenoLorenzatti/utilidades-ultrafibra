@@ -1,0 +1,288 @@
+
+@import url('https://fonts.cdnfonts.com/css/proxima-nova-condensed');
+
+#navbar,#div-header{
+    background-color: #171C35;
+}
+
+#navbar,#boton-nav {
+    color: white;
+}
+
+#boton-nav:hover , #navDiv-boton:hover{
+    background-color: #2B304A;
+    color: grey;
+    transition: transform 0.3s ease-in-out;
+}
+
+#bg-body, #card-table, #offcanvasRight{
+    background-color: #171C35;
+    background-clip: content-box;
+    border-top: 5px solid transparent;
+    color: white;
+}
+
+#card-table, #miTabla{
+    color: white;
+}
+
+#section{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 2px;
+    color: white;
+}
+
+
+#main-header{
+    background-color: #171C35;
+}
+
+#boton{
+    font-size: 15px;
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 2px;
+    transform: scale(0.7);
+    padding: 50px;
+    border: solid 2px;
+    border-radius: 50%;
+    border-color: white;
+    color: white;
+}
+
+#boton:hover {
+    color: #31FB73;
+    border-color: #31FB73;
+    transition: transform 0.3s ease-in-out;
+}
+
+body {
+    font-size: 16px;
+}
+
+#btn, #section {
+    font-size: 1.5em;
+}
+
+
+#hr {
+    border-top: 4px solid white;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.vertical-line {
+    border-left: 2px solid #57FF89;
+    height: 50px; /* ajusta la altura a tu necesidad */
+    margin: 0 20px; /* ajusta el margen a tu necesidad */
+}
+
+#bg-tabla{
+    color: white;
+    background-color: #2B304A;
+}
+
+#btn-upload, #btn-upload-control{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 3px;
+}
+
+
+#btn-upload:hover, #btn-upload-control:hover{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 3px;
+    background-color:  #57FF89;
+    color: black;
+}
+
+#botonesUpload{
+    background-color:  #2B304A;
+    border-top: 2px solid #57FF89;
+}
+
+#img-logo{
+    width: 400px;
+    height: auto;
+}
+
+#footer-Copy{
+    font-family: sans-serif;
+}
+
+#btn-cruz{
+    background-color: red;
+    border-color: red;
+    color: white;
+}
+
+#btn-edicion{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 3px;
+    background: #171C35;
+    border-bottom:   2px solid white;
+    border-left:   2px solid white;
+    border-right: 2px solid white;
+    color: white;
+
+}
+
+#btn-edicion:hover{
+    border-bottom:   2px solid #57FF89;
+    border-left:   2px solid #57FF89;
+    border-right: 2px solid #57FF89;
+    color: #57FF89;
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+#btn-verdes{
+    background-color: #31FB73;
+    color: #171C35;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#btn-verdes:hover{
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+#btn-debitos:checked ,#Debito-Abierto:checked{
+    color: #044218;
+    font-weight: bold;
+}
+
+.btn-check:checked + .btn-outline-light {
+    color: #044218;
+    font-weight: bold;
+}
+
+#nav-crearInsumo{
+    background-color:  #2B304A;
+    border-bottom: 2px solid #57FF89;
+}
+
+#header-modal,#modal-body{
+    color: white;
+    background-color:  #171C35;
+}
+
+.custom-btn-label {
+    font-size: 1.2rem; /* ajustar el tamaño según tu preferencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dropdownMenuButton{
+    letter-spacing: 2px;
+    background: white;
+    border-bottom:   2px solid white;
+    border-left:   2px solid white;
+    border-right: 2px solid white;
+    color: #171C35;
+    box-shadow: 0px 0px 10px 0px rgba(36, 42, 72,0.75);
+}
+
+#dropdownMenuButton:hover{
+    border-bottom:   2px solid #242A48;
+    border-left:   2px solid #242A48;
+    border-right: 2px solid #242A48;
+    color: #242A48;
+}
+
+#container-border{
+    background: transparent linear-gradient(106deg, #4158F0 0%, #31FB73 100%) 0% 0% no-repeat padding-box;
+}
+
+#nombre-usuario {
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 2px;
+}
+
+#botonesUpload, #tabla{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 3px;
+}
+
+#btn-cerrarSesion{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 2px;
+    color: #31FB73;
+}
+#btn-cerrarSesion:hover{
+    color: #05852F;
+}
+
+.fa-user{
+    color: #31FB73;
+    transform: scale(1.3);
+    margin-right: 6px;
+}
+
+footer {
+    position: relative;
+    height: 200px; /* Definimos una altura fija para el footer */
+}
+
+.footer-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/footer.png');
+    background-size: cover; /* Escala la imagen para cubrir todo el elemento sin distorsionarla */
+    background-position: center center; /* Centra la imagen */
+}
+
+#footer-plantilla{
+    color: #171C35;
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    line-height: 1.5;
+}
+
+#img-logo-footer{
+    transform: scale(0.8);
+}
+
+.navbar{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 2px;
+}
+
+#div-crear-insumo, #categoria, #titular{
+    color: #05852F;
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#tablas-font{
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    letter-spacing: 2px;
+}
+
+/*#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading-overlay #spinner {
+    margin-right: 10px;
+}
+
+#loading-overlay span {
+    font-size: 24px;
+}
+
+*/

@@ -1,0 +1,50 @@
+<section th:fragment="editar-insumo-frag" id="editar-insumo-frag">
+    <div class="modal fade modal-lg" id="editaInsumoModal" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="tituloModal">[[#{insumos.editarInsumo}]]</h1>
+                    <button type="button" id="btn-cruz" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row mt-2 g-3" action="/editarInsumo" method="POST">
+                        <input type="hidden" name="idModificarInsumo" id="idModificarInsumo"></input>
+                        <section th:replace="~{insumos/crearInsumo :: crearModificarInsumo}"></section>
+                    </form>
+                    <br/>
+                    <div class="modal-footer">
+                        <div  class="row">
+                            <br/>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">[[#{insumos.btnCerrar}]]</button>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="editar-insumo-masivo-frag" id="editar-insumo-masivo-frag">
+    <div class="modal fade modal-lg" id="editaInsumoMasivoModal" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="tituloModal">[[#{insumos.editarInsumo.masivo}]]</h1>
+                        <button type="button" id="btn-cruz" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row mt-2 g-3" action="/editarInsumo-masivo" method="POST">
+                            <input type="hidden" name="arrayId" id="arrayId"></input>
+                            <section th:replace="~{insumos/crearInsumo :: crearModificarInsumo}"></section>
+                        </form>
+                        <br/>
+                        <div class="modal-footer">
+                            <div  class="row">
+                                <br/>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">[[#{insumos.btnCerrar}]]</button>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

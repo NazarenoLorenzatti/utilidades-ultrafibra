@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <nav class="navbar bg-body-tertiary mt-2">
+            <div class="container-fluid">
+                <a th:href="@{/insumos}" class="navbar-brand ms-3 "><i class="fa-solid fa-arrow-left me-2 fa-lg"></i> Regresar </a>
+                <a th:href="@{/}" class="navbar-brand me-5 "><i class="fa-solid fa-house me-2 fs-1"></i> Home </a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                        <div>
+                                Ocurrio un error al intentar exportar el archivo de Insumos. 
+                                Por favor verifique que el formato de los datos es correcto.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

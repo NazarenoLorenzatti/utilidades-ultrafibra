@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body id="bg-body">
+        <section th:replace="~{layout/spinner :: spinner-frag}"></section>
+        
+        <section th:replace="~{comercial/navbar-comercial :: navbar}"></section>  
+
+        <section th:replace="~{layout/importarExcel :: importar}"></section>  
+
+        <hr></hr>
+        <div class="container ">
+            <div class="row has-validation">
+                <div class="col-12">
+                    <form action="/extractoBancario" method="GET">
+                        <div class="container">
+                            <div class="row gx-5">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <input class="form-control" type="date" id="fecha" name="fechaSeleccionada" th:value="${fechaSeleccionada}" required/>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div id="bg-tabla" class="input-group-text pt-3">
+                                            <div class="col-6">
+                                                <div class="mb-3"> 
+                                                    <input class="btn-check form-control" type="radio" name="tipoDebito" value="Debitos Abiertos" checked="checked" id="Debito-Abierto"/>
+                                                    <label id="btn-cerrarSesion" class="btn btn-outline-light rounded-5 me-2" for="Debito-Abierto"> <i class="far fa-circle"></i> [[#{debitosAutomaticos.radioBtnAbiertos}]]</label>
+                                                </div> 
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3"> 
+                                                    <input class="btn-check" type="radio" name="tipoDebito" value="Debitos Cerrados" id="Debito-Cerrado"/>
+                                                    <label id="btn-cerrarSesion" class="btn btn-outline-light rounded-5 me-2" for="Debito-Cerrado"><i class="fas fa-circle"></i> [[#{debitosAutomaticos.radioBtnCerrados}]]</label>
+                                                </div> 
+                                            </div>
+                                        </div>  
+                                    </div>
+                                </div>
+                                <div class="col-6 d-flex justify-content-center align-content-center">
+                                    <button id="btn-upload"  class="btn btn-light p-3 ps-5 pe-5" type="submit"> <i class="fas fa-file-download fa-2xl"></i> [[#{debitosAutomaticos.generarExtracto}]]</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr></hr>
+
+        <section th:replace="~{layout/layoutTabla :: layoutTabla}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

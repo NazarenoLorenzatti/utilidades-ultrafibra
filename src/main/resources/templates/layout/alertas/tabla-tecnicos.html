@@ -1,0 +1,78 @@
+<section th:fragment="tabla-tecnicos-frag" id="tabla-tecnicos-frag">
+    <div id="tablas-font" class="container-fluid p-4">
+        <div class="row">
+            <div class="col-4">
+                <div id="bg-tabla" class="table-responsive p-2 mb-5 mt-3" >
+                    <table id="tabla-tecnicos" class="table table-light table-striped table-bordered table-sm table-lg">
+                        <div class="card-header text-center">
+                            <h4>[[#{alertas.tituloTabla}]]</h4>
+                            <hr id="hr"/>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <form method="POST" th:action="@{/agregarTecnico}">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="text" class="form-control" name="nombreTecnico" th:placeholder="#{alertas.nombreTecnico}" required></input>
+                                                </div>
+                                                <div class="col">
+                                                    <input type="number" class="form-control" name="celular" th:placeholder="#{alertas.celular}" required></input>
+                                                </div>
+                                            </div>
+                                            <button sec:authorize="hasRole('ROLE_ADMIN')" type="submit" id="btn-edicion" class="btn mt-2"> <i class="fas fa-user-plus"></i> [[#{alertas.nuevoTecnico}]]</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr id="hr"/>
+                        </div>
+
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th th:text="#{alertas.nombreTecnico}"></th>
+                                <th th:text="#{alertas.celular}"></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="tabla-insumos" th:if="${session.tecnicos != null and !session.tecnicos.empty}">
+                            <tr id="fila" th:each="tecnico,iter : ${session.tecnicos}">
+                                <td id="tdIdInsumo" th:text="${iter.count}" th:data-value="${tecnico.getIdTecnico()}" name="idTecnico"></td>
+                                <td id="tdCodigoBarras" th:text="${tecnico.getNombre_tecnico()}" th:data-value="${tecnico.getNombre_tecnico()}">[[#{alertas.nombreTecnico}]]</td>
+                                <td id="tdNombreInsumo" th:text="${tecnico.getCelular()}" th:data-value="${tecnico.getCelular()}">[[#{alertas.celular}]]</td>
+                                <td>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarTecnico/{idTecnico}(idTecnico=${tecnico.getIdTecnico()})}"
+                                                   class="btn btn-sm btn-danger mb-3 me-3"><i class="fas fa-trash-alt"></i></a> 
+                                            </div> <!-- Eliminar --> 
+                                            <div class="col-md-6">
+                                                <button type="button" sec:authorize="hasRole('ROLE_ADMIN')"
+                                                        class="btn btn-sm btn-light mb-1 me-1" data-bs-toggle="modal"
+                                                        data-bs-target="#editarTecnicoModal" onclick="editarTecnico(this.closest('tr'))"><i class="fas fa-pencil-alt"></i> 
+                                                </button><!-- Actualizar --> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center p-2" th:if="${session.tecnicos == null or session.tecnicos.empty}">
+                    <div class="alert alert-warning" role="alert">
+                        [[#{layoutTabla.mensaje}]]
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <section th:replace="~{layout/alertas/tabla-Log :: tabla-log-frag}"></section>
+            </div>
+
+        </div>
+    </div>
+
+</section>

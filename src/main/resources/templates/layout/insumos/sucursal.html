@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+    <section th:fragment="sucursal-details" id="categoria">
+        <br/>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-4">
+                    <input class="btn-check" type="radio" name="accion-Suc" value="Crear-Suc" id="rBtnCrear-Suc" onchange="mostrarFormSuc()"/>
+                    <label class="btn btn-light custom-btn-label" for="rBtnCrear-Suc"><i class="fas fa-plus-circle me-2"></i>Crear</label>
+                </div> 
+                <div class="col-md-4">
+                    <input class="btn-check" type="radio" name="accion-Suc" value="Actualizar-Suc" id="rBtnActualizar-Suc" onchange="mostrarFormSuc()"/>
+                    <label class="btn btn-light custom-btn-label" for="rBtnActualizar-Suc"><i class="fas fa-sync-alt me-2"></i>Actualizar</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- FORM CATEGORIA NUEVA -->
+            <div id="formNueva-suc" style="display: none;">
+                <hr/>
+                <div class="container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <form th:action="@{/crearSucursal}">
+                                    <div class="col-12">
+                                        <label for="nombreSucursal" class="form-label">Nombre</label>
+                                        <input type="text" name="nombreSucursal" class="form-control" id="nombreSucursal" aria-describedby="ayudaNombre" required>
+                                            <div id="ayudaNombre" class="form-text">Ingrese el nombre para la nueva Sucursal</div>
+                                    </div>
+                                    <div class=" mt-3 d-grid">
+                                        <button type="submit" id="btn-verdes" class="btn rounded-5 m-2 fs-5">Crear</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM ACTUALIZAR O ELIMINAR CATEGORIA -->
+            <div id="formActualizar-suc" style="display: none;"> 
+                <hr/>
+                <div class="container mt-3">
+                    <div class ="row d-flex justify-content-center">
+                        <div class="col-md-5">
+                            <div class="dropdown ps-3 ms-3">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    SUCURSALES
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li th:each="sucursal : ${session.sucursales}">
+                                        <button class="dropdown-item" th:onclick="seleccionoSucursal(this)" th:value="${sucursal.getIdSucursal()}"
+                                                th:text="${sucursal.getLocalidad_sucursal()}">
+                                        </button>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class ="row d-flex justify-content-center">
+                        <div class="ms-2 col-md-10" style="display: none;" id="suc-check">
+                            <form method="POST"  action="/updateSucursal" >
+                                <div class="mb-3">
+                                    <label for="textISuc" class="form-label">ID: </label><br/>
+                                    <input  class="form-control" type="text" name="idUpdate" readOnly id="textIdSuc"></input>
+
+                                    <label for="nombreSuc-Upd" class="form-label">Nombre</label>
+                                    <input type="text" name="nombreUpdate" class="form-control" id="nombreSuc-Upd" aria-describedby="ayudaNombre" required>
+                                        <div id="ayudaNombre" class="form-text">Ingrese los cambios en  el nombre para la categoria</div>
+                                </div>   
+                                <div class="row d-flex justify-content-center ms-2">
+                                    <div class="col-5">
+                                        <button type="submit" id="btn-verdes" class="btn"><i class="fas fa-sync-alt fa-lg"></i>Actualizar</button>
+                                    </div>
+                                </div>  
+                            </form>
+                            <form method="POST" action="/eliminarSucursal">
+                                    <div class="row d-flex justify-content-center ms-2">
+                                        <div class="col-5 mt-3">
+                                            <input  type="hidden" name="idEliminar" readOnly id="IdEliminarSuc"></input>
+                                            <button type="submit" id="btn-eliminar" class="btn btn-outline-danger ps-4 pe-4"><i class="fas fa-trash-alt fa-lg"></i>Eliminar</button>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                        <div class="ms-2 col-md-10">
+                            <div id="suc-uncheck" style="display: block;">
+                                <div class="alert alert-light text-center" role="alert">
+                                    <p>...NO SELECCIONO NINGUNA SUCURSAL...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</html>

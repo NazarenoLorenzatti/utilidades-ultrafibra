@@ -1,0 +1,63 @@
+<section th:fragment="tabla-insumos" id="tabla-insumos">
+      <div class="container-fluid p-4">
+            <div class="row-cols-12">
+                <div class="col-12">
+                    <div id="bg-tabla" class=" table-responsive p-2 mb-5 mt-3" th:if="${session.listaDeInsumos != null and !session.listaDeInsumos.empty}">
+                        <table id="tabla-insumos-init" class="table table-dark table-striped table-bordered table-sm table-lg">
+
+                            <thead class="thead-dark">                                
+                                <tr>
+                                    <th><input class="form-check-input me-1" type="checkbox" id="seleccionarTodoChk" onchange="seleccionarTodo()"></input></th>
+                                    <th>#</th>
+                                    <th th:text="#{tablaInsumos.codigoBarras}"></th>
+                                    <th th:text="#{tablaInsumos.nombreInsumo}"></th>
+                                    <th th:text="#{tablaInsumos.descripcion}"></th>
+                                    <th th:text="#{tablaInsumos.fecha}"></th>
+                                    <th th:text="#{tablaInsumos.titular}"></th>
+                                    <th th:text="#{tablaInsumos.departamento}"></th>
+                                    <th th:text="#{tablaInsumos.categoria}"></th>
+                                    <th th:text="#{tablaInsumos.sucursal}"></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider" id="tabla-insumos">
+                                <tr id="fila" th:each="insumo,iter : ${session.listaDeInsumos}">
+                                    <td><input class="form-check-input me-1" type="checkbox" id="edicionChkBox" th:value="${insumo.getIdInsumo()}" th:data-value="${insumo.getIdInsumo()}"></input></td>
+                                    <td id="tdIdInsumo" th:text="${iter.count}" th:data-value="${insumo.getIdInsumo()}" name="idInsumo"></td>
+                                    <td id="tdCodigoBarras" th:text="${insumo.getCodigoBarras()}" th:data-value="${insumo.getCodigoBarras()}">codigo barras</td>
+                                    <td id="tdNombreInsumo" th:text="${insumo.getNombre_insumo()}" th:data-value="${insumo.getNombre_insumo()}">insumo</td>
+                                    <td id="tdDescripcion" th:text="${insumo.getDescripcion()}" th:data-value="${insumo.getDescripcion()}" >Descripcion</td>
+                                    <td id="tdFecha" th:text="${insumo.getFecha_compra()}" th:data-value="${insumo.getFecha_compra()}">Fecha</td>
+                                    <td id="tdTitular" th:text="${insumo.getTitular().getNombre()}" th:data-value="${insumo.getTitular().getIdTitular}">Titular</td>
+                                    <td id="tdDepartamento" th:text="${insumo.getDepartamento().getNombre_departamento()}" th:data-value="${insumo.getDepartamento().getIdDepartamento()}">Departamento</td>
+                                    <td id="tdCategoria" th:text="${insumo.getCategoria().getNombre_categoria()}" th:data-value="${insumo.getCategoria().getIdCategoria()}">Categoria</td>
+                                    <td id="tdSucursal" th:text="${insumo.getSucursal().getLocalidad_sucursal()}"th:data-value="${insumo.getSucursal().getIdSucursal()}">Sucursal</td>
+                                    <td>
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarInsumo/{idInsumo}(idInsumo=${insumo.getIdInsumo()})}"
+                                                       class="btn btn-sm btn-danger mb-3 me-3"><i class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" 
+                                                            class="btn btn-sm btn-light mb-3 me-3" data-bs-toggle="modal"
+                                                            data-bs-target="#editaInsumoModal" onclick="editarInsumo(this.closest('tr'))"><i class="fas fa-pencil-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center p-2" th:if="${session.listaDeInsumos == null or session.listaDeInsumos.empty}">
+                        <div class="alert alert-warning" role="alert">
+                            [[#{layoutTabla.mensaje}]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

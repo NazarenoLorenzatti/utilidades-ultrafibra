@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+    <section th:fragment="layoutTabla" id="tabla">
+
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" id="card-table">
+                        <div class="card-header text-center">
+                            <h4>[[#{layoutTabla.header}]]</h4>
+                            <hr id="hr"/>
+                        </div>
+
+                        <!-- si datos es distinto de nulo y vacio lo iteramos -->
+                        <div class="container p-2 table-responsive" id="bg-tabla" th:if="${datos != null and !datos.empty}">
+                            <table id="tabla-upload" class="table table-dark table-striped table-bordered ">
+                                <thead class="thead-dark">
+                                    <th th:each="cabecero : ${cabeceros}">
+                                        <span th:text="${cabecero}"></span>
+                                    </th>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <tr th:each="fila : ${datos}">
+                                        <td th:each="dato : ${fila}" th:text="${dato}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center p-2" th:if="${datos == null or datos.empty}">
+                            <div class="alert alert-dark" role="alert">
+                                [[#{layoutTabla.mensaje}]]
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</html>

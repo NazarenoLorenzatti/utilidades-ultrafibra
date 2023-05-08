@@ -1,0 +1,41 @@
+<section th:fragment="editar-agregar-frag" id="editar-agregar-frag">
+    <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div id="modal-body" class="modal-content">
+                <div id="header-modal" class="modal-header">
+                    <h1 class="modal-title fs-5" id="tituloModal">[[#{insumos.agregarInformacion}]]</h1>
+                    <button type="button" id="btn-cruz" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select" aria-label="Default select example" onchange="mostrarCampos(this.value)">
+                        <option value="">Seleccionar opción</option>
+                        <option value="Categoria">Categoria</option>
+                        <option value="Sucursal">Sucursal</option>
+                        <option value="Titular">Titular</option>
+                        <option value="Departamento">Departamento</option>
+                    </select>
+
+                    <div id="Categoria" style="display: none;">
+                        <section th:replace="~{layout/insumos/categoria :: categoria-details}"></section>
+                    </div>
+                    <div id="Sucursal" style="display: none;">
+                        <section th:replace="~{layout/insumos/sucursal :: sucursal-details}"></section>
+                    </div>
+                    <div id="Titular" style="display: none;">
+                        <section th:replace="~{layout/insumos/titular :: titular-details}"></section>
+                    </div>
+                    <div id="Departamento" style="display: none;">
+                        <section th:replace="~{layout/insumos/departamento :: departamento-details}"></section>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+            <div id="modal-body" class="modal-footer">
+                <div class="row">
+                    <br/>
+                    <button type="button"  id="btn-cerrarSesion" class="btn btn-outline-light" data-bs-dismiss="modal">[[#{insumos.btnCerrar}]]</button>   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

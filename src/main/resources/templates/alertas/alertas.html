@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body id="bg-body">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <div class="row p-1 mb-2" id="container-border"></div>
+        <nav class="navbar bg-body-tertiary mt-2">
+            <div class="container-fluid">
+                <a th:href="@{/}" class="navbar-brand "><i class="fa-solid fa-house me-5 ms-5 fs-1"></i></a>
+
+                <div class="container">
+                    <div class="row d-flex">
+                        <div class="col d-flex justify-content-end">
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/iniciar}"
+                               id="btn-verdes" class="btn btn-sm"><i class="fa-solid fa-play"></i> [[#{alertar.btnIniciarPrograma}]]</a>
+                        </div>
+                        <div class="col">
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/parar}"
+                               id="btn-upload" class="btn btn-sm btn-light p-2"> <i class="fa-solid fa-hand"></i> [[#{alertar.btnPararPrograma}]]</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <hr/>
+
+
+        <section th:replace="~{layout/alertas/editar-tecnico-modal :: modal-editarTecnico}"></section>
+
+        <section th:replace="~{layout/alertas/tabla-tecnicos :: tabla-tecnicos-frag}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body id="bg-body">
+
+        <section th:replace="~{layout/spinner :: spinner-frag}"></section>
+
+        <section th:replace="~{comercial/navbar-comercial :: navbar}"></section>  
+
+        <section th:replace="~{layout/importarExcel :: importar}"></section>  
+
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="input-group has-validation ps-5">
+                            <input  class="form-control"  type="text" name="filename" id="nombre_archivo" th:placeholder="#{placeholder.inputText}" required></input>
+                            <button id="btn-upload" class="btn btn-light" type="button" onclick="downloadFile()"><i class="fas fa-file-download"></i> - [[#{homebankingLink.botonProceso}]]</button>          
+                            <button id="btn-upload-control" disabled="true" class="btn btn-light" type="button" onclick="downloadFileControl()"><i class="fas fa-file-download" ></i> - [[#{homebankingLink.botonControl}]]</button>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div> 
+        </div> 
+        <hr></hr>
+        <section th:replace="~{layout/layoutTabla :: layoutTabla}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

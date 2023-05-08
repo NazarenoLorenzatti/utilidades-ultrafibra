@@ -1,0 +1,123 @@
+<section th:fragment="filtros" id="filtros"> 
+    <button class="btn" id="btn-verdes" type="button" data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <i class="fas fa-filter"></i> [[#{insumos.filtros}]]
+    </button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">[[#{insumos.filtros}]]</h5>
+            <button type="button" id="btn-cruz" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                [[#{insumos.filtros}]]
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="javascript:filtrarPor(1)">[[#{tablaInsumos.titular}]]</a></li>
+                <li><a class="dropdown-item" href="javascript:filtrarPor(2)">[[#{tablaInsumos.departamento}]]</a></li>
+                <li><a class="dropdown-item" href="javascript:filtrarPor(3)">[[#{tablaInsumos.categoria}]]</a></li>
+                <li><a class="dropdown-item" href="javascript:filtrarPor(4)">[[#{tablaInsumos.sucursal}]]</a></li>
+            </div>
+            <hr/>
+            <div class="container">
+                <div id="formTitular" style="display: none;">
+                    <form>
+                        <ul class="list-group" id="listGroup">
+                            <li th:each="titular : ${session.titulares}" class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox" th:value="${titular.getNombre()}" id="firstCheckbox">
+                                <label class="form-check-label" for="firstCheckbox" th:text="${titular.getNombre()+' '+titular.getApellido()}"></label>
+                            </li>
+                        </ul>
+                        <hr/>
+                        <div class="justify-content-center">
+                            <div class="col"></div>
+                            <div class="col">
+                                <button id="btn-verdes" class="btn mb-3 me-3" type="button" onclick="filtrar(6)">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger mb-3 me-3" onclick="borrarFiltros(6)">
+                                    <i class="fa-sharp fa-solid fa-eraser"></i>
+                                </button>
+                            </div>
+                            <div class="col"> </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="formDepartamento" style="display: none;">
+                    <form>
+                        <ul class="list-group" id="listGroup">
+                            <li th:each="departamento : ${session.departamentos}" class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox" th:value="${departamento.getNombre_departamento()}" id="firstCheckbox">
+                                <label class="form-check-label" for="firstCheckbox" th:text="${departamento.getNombre_departamento()}"></label>
+                            </li>
+                        </ul>
+                        <hr/>
+                        <div class="justify-content-center">
+                            <div class="col"></div>
+                            <div class="col">
+                                <button id="btn-verdes" class="btn mb-3 me-3" type="button" onclick="filtrar(7)">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger mb-3 me-3" onclick="borrarFiltros(7)">
+                                    <i class="fa-sharp fa-solid fa-eraser"></i>
+                                </button>
+                            </div>
+                            <div class="col"> </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="formCategoria" style="display: none;">
+                    <form>
+                        <ul class="list-group" id="listGroup">
+                            <li th:each="categoria : ${session.categorias}" class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox" th:value="${categoria.getNombre_categoria()}" id="firstCheckbox">
+                                <label class="form-check-label" for="firstCheckbox" th:text="${categoria.getNombre_categoria()}"></label>
+                            </li>
+                        </ul>
+                        <hr/>
+                        <div class="justify-content-center">
+                            <div class="col"></div>
+                            <div class="col">
+                                <button id="btn-verdes" class="btn mb-3 me-3" type="button" onclick="filtrar(8)">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger mb-3 me-3" onclick="borrarFiltros(8)">
+                                    <i class="fa-sharp fa-solid fa-eraser"></i>
+                                </button>
+                            </div>
+                            <div class="col"> </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="formSucursal" style="display: none;">
+                    <form>
+                        <ul class="list-group" id="listGroup">
+                            <li th:each="sucursal : ${session.sucursales}" class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox" th:value="${sucursal.getLocalidad_sucursal}" id="firstCheckbox">
+                                <label class="form-check-label" for="firstCheckbox" th:text="${sucursal.getLocalidad_sucursal}"></label>
+                            </li>
+                        </ul>
+                        <hr/>
+                        <div class="justify-content-center">
+                            <div class="col"></div>
+                            <div class="col">
+                                <button id="btn-verdes" class="btn mb-3 me-3" type="button" onclick="filtrar(9)">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger mb-3 me-3" onclick="borrarFiltros(9)">
+                                    <i class="fa-sharp fa-solid fa-eraser"></i>
+                                </button>
+                            </div>
+                            <div class="col"> </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

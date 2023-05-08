@@ -1,0 +1,48 @@
+<section th:fragment="importar-modal" id="importar-modal">
+     <div class="modal fade modal-lg" id="importarModal" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="tituloModal">[[#{insumos.importarExcel}]]</h1>
+                        <button type="button" id="btn-cruz" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container" >
+                            <div class="row">
+                                <div class="col">
+                                    <div hidden="true" id="alerta" class="alert alert-success" role="alert">
+                                        [[#{importarExcel.alerta}]]
+                                    </div>
+                                    <form enctype="multipart/form-data" action="/importar" method="POST" >
+                                        <input type="hidden" name="uri2" id="idUri"></input>
+                                        <div class="container">
+
+                                            <div class="row">
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="file" name="file" id="file" 
+                                                           accept=".xls,.xlsx" th:onchange="'checkFileSelected();'"></input>
+                                                </div>                            
+                                                <div class="col-lg-3">
+                                                    <div>
+                                                        <input onclick="mostrarSpinner()" disabled="true" id="submitButton" class="btn btn-outline-success" 
+                                                               type="submit"  th:value="#{importarExcel.botonCargar}" data-bs-dismiss="modal"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="modal-footer">
+                            <div  class="row">
+                                <br/>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">[[#{insumos.btnCerrar}]]</button>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

@@ -1,0 +1,27 @@
+<section th:fragment="tabla-log-frag" id="tabla-log-frag">
+    <div id="bg-tabla" class="table-responsive p-2 mb-5 mt-3" >
+        <table id="tabla-log" class="table table-light table-striped table-bordered table-sm table-lg">
+            <div class="card-header text-center">
+                <h4>[[#{alertas.tablaTituloLog}]]</h4>
+                <hr id="hr"/>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/vaciarRegistro}"
+                   class="btn btn-sm btn-danger ms-3 mb-3 me-3"><i class="fas fa-trash-alt me-2"></i>[[#{alertas.vaciarRegistro}]]</a>
+            </div>
+
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th>[[#{alertas.Log}]]</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider" id="tabla-insumos" th:if="${session.eventos != null and !session.eventos.empty}">
+                <tr id="fila" th:each="evento,iter : ${session.eventos}">
+                    <td id="tdIdInsumo" th:text="${iter.count}"></td>
+                    <td id="evento" th:text="${evento.getLog_evento()}" th:data-value="${evento.getLog_evento()}">[[#{alertas.info}]]</td>
+                </tr>
+            </tbody> 
+           
+        </table>
+    </div>
+
+</section>

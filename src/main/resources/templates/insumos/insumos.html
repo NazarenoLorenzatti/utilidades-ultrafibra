@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}">
+        
+        <script src="/js/scriptsInsumos.js"></script>
+    </head>
+
+
+    <body id="bg-body">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <!-- ---------------------------------------------- MODAL EDITAR Y AGREGAR  ------------------------------------------------>
+        <section th:replace="~{layout/insumos/editar-agregar-modal :: editar-agregar-frag}"></section>
+
+        <!-- ---------------------------------------------- MODAL IMPORTAR ---------------------------------------------- -->
+        <section th:replace="~{layout/insumos/importar-modal :: importar-modal}"></section>
+
+        <!---------------------------------------------- MODAL EDITAR INSUMO ---------------------------------------------->
+        <section th:replace="~{layout/insumos/editar-insumo-modal :: editar-insumo-frag}"></section>
+
+        <!------------------------------------ MODAL EDITAR MASIVO INSUMO------------------------ -->
+        <section th:replace="~{layout/insumos/editar-insumo-modal :: editar-insumo-masivo-frag}"></section>
+
+        <!------------------------------------ NAVBAR------------------------ -->
+        <section th:replace="~{layout/insumos/navbar-insumos :: navbar-insumos}"></section>
+
+        <!-------------------------------- BOTONES  EDICION MASIVA CREAR E IMPORTAR----------------------------->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5">
+                    <div class="d-flex justify-content-start align-items-lg-start">
+                        <a th:href="@{/insumos/crearInsumo}"  id="btn-verdes" class="btn mb-3 me-3">
+                            <i class="fas fa-plus"></i><i class="fas fa-box"></i> [[#{insumos.crearInsumo}]]</a>                       
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#importarModal" class="pt-3 link-success fs-6">
+                            <i class="fas fa-file-import"></i> [[#{insumos.importar}]]
+                        </a>
+                    </div>
+                </div>
+                <div class="col-7 d-flex justify-content-start">
+                    <div class="dropdown ps-3">
+                        <div class="d-flex align-items-lg-start">
+                            <a id="btn-edicion" onclick="edicionMasiva()" class="btn btn-sm mb-3 me-lg-6"
+                               data-bs-toggle="modal" data-bs-target="#editaInsumoMasivoModal">
+                                <i class="fas fa-object-group fa-lg"></i>
+                                [[#{insumos.edicionMasiva}]]
+
+                            </a>                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!----------------------------------------- TABLA DE INSUMOS ------------------------------------------------>
+        <section th:replace="~{layout/insumos/tabla-insumos :: tabla-insumos}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

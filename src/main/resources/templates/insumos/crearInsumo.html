@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body id="bg-body">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <nav id="nav-crearInsumo" class="navbar bg-body-tertiary mt-2">
+            <div class="container-fluid">
+                <a th:href="@{/insumos/insumos}" class="navbar-brand ms-3 "><i class="fa-solid fa-arrow-left me-2 fa-lg"></i> [[#{crearInsumo.regresar}]] </a>
+                <a th:href="@{/}" class="navbar-brand me-5 "><i class="fa-solid fa-house me-2 fs-1"></i> Home </a>
+
+            </div>
+        </nav>
+
+        <div  id="div-crear-insumo" class="container mb-5">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-10">
+                    <form action="/guardarInsumo" method="POST">
+                        <section class="row mt-2 g-3" th:fragment="crearModificarInsumo" id="modInsumo">
+                            <div class="col-md-6">
+                                <label for="codigoBarras" class="form-label">[[#{tablaInsumos.codigoBarras}]]</label>
+                                <input type="text" name="codigoBarras" class="form-control" id="codigoBarras" th:placeholder="#{crearInsumo.placeholder.codigoBarras}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombreInsumo" class="form-label">[[#{tablaInsumos.nombreInsumo}]]</label>
+                                <input type="text" name="nombreInsumo" class="form-control" id="nombreInsumo" th:placeholder="#{crearInsumo.placeholder.nombreInsumo}" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="descripcion" class="form-label">[[#{tablaInsumos.descripcion}]]</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="inputGroup">[[#{crearInsumo.opcional}]]</span>
+                                    <textarea class="form-control" name="descripcion"  aria-describedby="inputGroup" th:placeholder="#{crearInsumo.placeholder.descripcion}"  id="descripcion" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <label for="fecha" class="form-label">[[#{tablaInsumos.fecha}]]</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha">
+                            </div>
+
+                            <div class="col-md-3"></div>
+
+                            <div class="col-md-3">
+                                <label for="titular" class="form-label">[[#{tablaInsumos.titular}]]</label>
+                                <select name="titular" class="form-select" id="titular" required>
+                                    <option selected disabled value="">[[#{crearInsumo.dropdown.titular}]]</option>
+                                    <option th:each="titular : ${session.titulares}" th:value="${titular.getIdTitular()}" 
+                                            th:text="${titular.getNombre()+' '+titular.getApellido()}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="departamento" class="form-label">[[#{tablaInsumos.departamento}]]</label>
+                                <select class="form-select" name="departamento" id="departamento" required>
+                                    <option selected disabled value="">[[#{crearInsumo.dropdown.departamento}]]</option>
+                                    <option th:each="departamento : ${session.departamentos}" th:value="${departamento.getIdDepartamento()}" 
+                                            th:text="${departamento.getNombre_departamento()}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="categoria" class="form-label">[[#{tablaInsumos.categoria}]]</label>
+                                <select class="form-select" name="categoria" id="categoria" required>
+                                    <option id="categoria-selected" selected disabled value="">[[#{crearInsumo.dropdown.categoria}]]</option>
+                                    <option th:each="categoria : ${session.categorias}" th:value="${categoria.getIdCategoria()}" 
+                                            th:text="${categoria.getNombre_categoria()}"></option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="sucursal" class="form-label">[[#{tablaInsumos.sucursal}]]</label>
+                                <select class="form-select" name="sucursal" id="sucursal" required>
+                                    <option selected disabled value="">[[#{crearInsumo.dropdown.sucursal}]]</option>
+                                    <option th:each="sucursal : ${session.sucursales}" th:value="${sucursal.getIdSucursal()}" 
+                                            th:text="${sucursal.getLocalidad_sucursal()}"></option>
+                                </select>
+                            </div>  
+                            <hr id="hr"/>
+                            <div class="col-12">
+                                <button class="btn btn-lg" id="btn-verdes" type="submit">[[#{crearInsumo.guardar}]]</button>
+                            </div>
+                        </section>
+                    </form>
+
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

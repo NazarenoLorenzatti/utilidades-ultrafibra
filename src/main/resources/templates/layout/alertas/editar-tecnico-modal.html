@@ -1,0 +1,35 @@
+<section th:fragment="modal-editarTecnico" id="modal-editarTecnico">
+    <div class="modal fade modal-lg" id="editarTecnicoModal" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content" id="bg-body">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="tituloModal">[[#{alertas.editarTecnico}]]</h1>
+                    <button type="button" id="btn-cruz" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form th:action="@{/editarTecnico}" method="POST">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="hidden" name="idModificarTecnico" id="idModificarTecnico"></input>
+                                    <input type="text" class="form-control" name="nombreTecnico" id="nombreTecnico" required></input>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="celular" id="celular" required></input>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-success mt-3" th:value="#{alertas.guardarCambios}"></input>
+                        </form>
+                    </div>
+                    <br/>
+                    <div class="modal-footer">
+                        <div  class="row">
+                            <br/>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">[[#{insumos.btnCerrar}]]</button>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
