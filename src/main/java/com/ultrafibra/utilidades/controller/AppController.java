@@ -41,7 +41,7 @@ public class AppController {
         return subirArchivo.getUri(uri);
     }
 
-    @GetMapping("/downloadLink")
+    @GetMapping("comercial/downloadLink")
     public ResponseEntity<Resource> downloadFile(@RequestParam("filename") String filename, Model model) throws IOException {
         // Crea un objeto Resource para el archivo .txt
         FileSystemResource file = cbLink.crearArchivo(subirArchivo.getLectorExcel().getDatos(), filename.toUpperCase());
@@ -56,7 +56,7 @@ public class AppController {
 
     }
 
-    @GetMapping("/downloadLinkControl")
+    @GetMapping("comercial/downloadLinkControl")
     public ResponseEntity<Resource> downloadFileControl(@RequestParam("filename") String filename) throws IOException {
         FileSystemResource file = cbLink.archivoDeControl(subirArchivo.getLectorExcel().getDatos(), filename.toUpperCase());
         HttpHeaders headers = new HttpHeaders();
@@ -69,7 +69,7 @@ public class AppController {
 
     }
 
-    @GetMapping("/downloadPmc")
+    @GetMapping("comercial/downloadPmc")
     public ResponseEntity<Resource> downloadFilePmc(@RequestParam("filename") String filename) throws IOException {
         FileSystemResource file = cbPMC.crearArchivo(subirArchivo.getLectorExcel().getDatos(), filename.toUpperCase());
         HttpHeaders headers = new HttpHeaders();
@@ -82,7 +82,7 @@ public class AppController {
 
     }
 
-    @GetMapping("/downloadXML")
+    @GetMapping("comercial/downloadXML")
     public ResponseEntity<Resource> downloadFileXML(@RequestParam("filename") String filename) throws IOException {
         // Crea el Recurso en base al archivo XML creado a partir de la informacion enviada.
         ByteArrayResource resource = cbSirplus.leerTabla(subirArchivo.getLectorExcel().getDatos(), filename.toUpperCase());
@@ -98,7 +98,7 @@ public class AppController {
 
     }
 
-    @GetMapping("/downloadMacroClick")
+    @GetMapping("comercial/downloadMacroClick")
     public void downloadFileMacroClick(@RequestParam("filename") String filename, HttpServletResponse response) throws IOException {
         var extractoMC = new ExtractoMacroClicks(subirArchivo.getLectorExcel().getDatos(), subirArchivo.getLectorExcel().getCabeceros());
         Workbook workbook = extractoMC.generarExtracto();
@@ -110,7 +110,7 @@ public class AppController {
 
     }
 
-    @GetMapping("/extractoBancario")
+    @GetMapping("comercial/extractoBancario")
     public void downloadFileDebitosAutomaticos(@RequestParam("tipoDebito") String opcionSeleccionada,
             @RequestParam("fechaSeleccionada") String fechaSeleccionada, HttpServletResponse response) throws IOException {
         var extractoDA = new ExtractoDebitosAutomaticos(opcionSeleccionada,

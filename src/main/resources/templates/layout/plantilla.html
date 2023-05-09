@@ -26,35 +26,11 @@
         <link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
         <script type="text/javascript" th:src="@{/Js/funciones.js}"></script>
         <script type="text/javascript" th:src="@{/Js/scriptsInsumos.js}"></script>
-
-        <style>
-            #loading-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-                display: none;
-            }
-
-            #spinner {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                z-index: 1000;
-                display: none;
-            }
-        </style>
     </head>
 
     <body id="bg-body">
         <!--------------------------------------- Plantilla de Header ---------------------------------------------------->
         <header th:fragment="header">
-
-
-            <section th:replace="~{layout/spinner :: spinner-frag}"></section>
             <section id="main-header" class="py-4 text-white">
                 <div id="div-header" class="container-fluid">
                     <div class="row justify-content-between align-items-center">

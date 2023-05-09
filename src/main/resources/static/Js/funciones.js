@@ -10,7 +10,7 @@ function downloadFile() {
     if (nombreArchivo === '' || nombreArchivo === null) {
         nombreArchivo = "Archivo sin Nombre";
     }
-    fetch('/downloadLink?filename=' + nombreArchivo)
+    fetch('/comercial/downloadLink?filename=' + nombreArchivo)
             .then(function (response) {
 
                 // Si la respuesta HTTP indica un error, lanzar una excepción
@@ -47,7 +47,7 @@ function downloadFile() {
 
 function downloadFileControl() {
     nombreArchivo = document.getElementById("nombre_archivo").value;
-    fetch('/downloadLinkControl?filename=' + nombreArchivo)
+    fetch('/comercial/downloadLinkControl?filename=' + nombreArchivo)
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -75,7 +75,7 @@ function downloadFilePagoMisCuentas() {
     if (nombreArchivo === '' || nombreArchivo === null) {
         nombreArchivo = "Archivo sin Nombre";
     }
-    fetch('/downloadPmc?filename=' + nombreArchivo)
+    fetch('/comercial/downloadPmc?filename=' + nombreArchivo)
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -100,7 +100,7 @@ function downloadFilePagoMisCuentas() {
 
 function downloadFileXML() {
     nombreArchivo = document.getElementById("nombre_archivo").value;
-    fetch('/downloadXML?filename=' + nombreArchivo)
+    fetch('/comercial/downloadXML?filename=' + nombreArchivo)
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
@@ -125,7 +125,7 @@ function downloadFileXML() {
 
 function downloadExtractoMacroClick() {
     nombreArchivo = document.getElementById("nombre_archivo").value;
-    fetch('/downloadMacroClick?filename=' + nombreArchivo)
+    fetch('/comercial/downloadMacroClick?filename=' + nombreArchivo)
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("HTTP error " + response.status);
