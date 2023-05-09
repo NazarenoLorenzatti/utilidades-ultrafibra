@@ -25,8 +25,6 @@
         <link href="https://fonts.cdnfonts.com/css/proxima-nova-condensed" rel="stylesheet"></link>
         <link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
         <script type="text/javascript" th:src="@{/Js/funciones.js}"></script>
-        <script type="text/javascript" src="/home/c1901029/utilidades/utilidades_ultra_v1.0/classes/static/Js/funciones.js"></script>
-        <script type="text/javascript" th:src="@{/home/c1901029/utilidades/utilidades_ultra_v1.0/classes/static/Js/funciones.js}"></script>
         <script type="text/javascript" th:src="@{/Js/scriptsInsumos.js}"></script>
 
         <style>
@@ -54,7 +52,7 @@
     <body id="bg-body">
         <!--------------------------------------- Plantilla de Header ---------------------------------------------------->
         <header th:fragment="header">
-            
+
 
             <section th:replace="~{layout/spinner :: spinner-frag}"></section>
             <section id="main-header" class="py-4 text-white">
@@ -72,8 +70,10 @@
                                             <span id="nombre-usuario" class="mt-2 me-2 fs-5" sec:authentication="name"> Usuario Logueado</span>
                                         </div>
                                         <div>
-                                            <a id="btn-cerrarSesion" class="btn btn-outline-light rounded-5 me-2" href="#" onclick="this.parentNode.submit();"> 
-                                                <i class="fas fa-sign-out-alt"></i> [[#{plantilla.cerrarsesion}]]</a>
+                                            <button id="btn-cerrarSesion" class="btn btn-outline-light rounded-5 me-2" type="submit">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span th:text="#{plantilla.cerrarsesion}"></span>
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -110,8 +110,7 @@
                         <form method="POST" th:action="@{/logout}" class="d-flex justify-content-between">
                             <div>
                                 <a href="?lang=es">Español</a> ||
-                                <a href="?lang=en">English</a> ||
-                                <a href="#" onclick="this.parentNode.submit();">[[#{plantilla.cerrarsesion}]]</a>
+                                <a href="?lang=en">English</a> 
                             </div>
                         </form>
                     </div>
