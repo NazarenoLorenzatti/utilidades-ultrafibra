@@ -1,5 +1,6 @@
 package config;
 
+import com.ultrafibra.utilidades.GracefulShutdownHandler;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +18,6 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -58,10 +58,6 @@ public class WebConfig implements WebMvcConfigurer {
         return lci;
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registro) {
-//        registro.addInterceptor(localeChangeInterceptor());
-//    }
     @Bean
     public ViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
@@ -86,8 +82,9 @@ public class WebConfig implements WebMvcConfigurer {
         return resolver;
     }
 
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registro){
-//        registro.addViewController("/").setViewName("inicio");
-//    }
+    @Bean
+    public GracefulShutdownHandler gracefulShutdownHandler() {
+        return new GracefulShutdownHandler();
+    }
+
 }
