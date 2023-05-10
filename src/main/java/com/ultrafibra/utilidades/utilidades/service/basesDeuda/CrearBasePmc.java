@@ -98,9 +98,8 @@ public class CrearBasePmc {
                     + "0000000000000000000" + dniCliente.substring(1) + asignarEspacios(mensajeTicket, 40) + asignarEspacios(mensajePantalla, 15)
                     + asignarEspacios(numeroFactura, 60) + cerosDerecha("", 29);
             this.escritor.escribir(filaArchivo, true);
-
             
-            System.out.println("Una nueva fila cargada " + contador++);
+//            System.out.println("Una nueva fila cargada " + contador++);
         }
 
         String ultimaFila = "9400SBHN" + fechaPrimerFila + cerosIzquierda(valueOf(this.contadorFilas), 7) + "0000000"
@@ -133,7 +132,7 @@ public class CrearBasePmc {
 
     private String asignarEspacios(String fila, int pos) {
         int x = pos - fila.length();
-        for (int i = 0; i <= x; i++) {
+        for (int i = 1; i <= x; i++) {
             fila += " ";
         }
         return fila;
@@ -141,7 +140,7 @@ public class CrearBasePmc {
 
     private String cerosDerecha(String fila, int pos) {
         int x = pos - fila.length();
-        for (int i = 0; i <= x; i++) {
+        for (int i = 1; i <= x; i++) {
             fila += "0";
         }
         return fila;
@@ -149,64 +148,13 @@ public class CrearBasePmc {
 
     private String cerosIzquierda(String fila, int pos) {
         int x = pos - fila.length();
-        String ceros = null;
-        for (int i = 0; i <= x; i++) {
+        String ceros = "";
+        for (int i = 1; i <= x; i++) {
             ceros += "0";
         }
         return ceros+fila;
     }
 
-//    private String asignarEspacios(String fila, int pos) {
-//        String filaRet = null;
-//        char[] arrayInput = fila.toCharArray();
-//        char[] arrayOutput = new char[pos];
-//
-//        for (int i = 0; i < arrayOutput.length; i++) {
-//            arrayOutput[i] = ' ';
-//        }
-//
-//        for (int i = 0; i < arrayInput.length; i++) {
-//            arrayOutput[i] = arrayInput[i];
-//        }
-//
-//        filaRet = valueOf(arrayOutput);
-//        return filaRet;
-//    }
-//    private String cerosDerecha(String fila, int pos) {
-//        String filaRet = null;
-//        char[] arrayInput = fila.toCharArray();
-//        char[] arrayOutput = new char[pos];
-//
-//        for (int i = 0; i < arrayOutput.length; i++) {
-//            arrayOutput[i] = '0';
-//        }
-//
-//        for (int i = 0; i < arrayInput.length; i++) {
-//            arrayOutput[i] = arrayInput[i];
-//        }
-//
-//        filaRet = valueOf(arrayOutput);
-//        return filaRet;
-//    }
-//    private String cerosIzquierda(String fila, int pos) {
-//        String filaRet = null;
-//        char[] arrayFila = fila.toCharArray();
-//        char[] filaArray = new char[pos];
-//
-//        for (int i = 0; i < filaArray.length; i++) {
-//            filaArray[i] = '0';
-//        }
-//
-//        int y = pos - arrayFila.length;
-//
-//        for (char c : arrayFila) {
-//            filaArray[y] = c;
-//            y++;
-//        }
-//        filaRet = valueOf(filaArray);
-//        return filaRet;
-//    }
-    
     private LocalDate stringToLocalDate(String fecha) {
         int intDia, intAño;
         int intMes = 1;
