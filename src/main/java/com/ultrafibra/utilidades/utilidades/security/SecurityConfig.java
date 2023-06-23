@@ -47,7 +47,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/css/**", "/img/**", "/uploadExcelFile", "/Js/**");
+        return (web) -> web.ignoring().requestMatchers("/css/**", "/img/**", "/uploadExcelFile", "/Js/**","/importarTickets");
     }
 
 }

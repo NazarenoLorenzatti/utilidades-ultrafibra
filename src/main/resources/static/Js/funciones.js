@@ -538,7 +538,27 @@ $(document).ready(function () {
     });
 });
 
-
+//Para paginacion
+$(document).ready(function () {
+    $('#tabla-upload2').DataTable({
+        "paging": true, // Habilitar la paginación
+        "pageLength": 10, // Número de filas por página
+        "lengthMenu": [10, 25, 50, 75, 100], // Opciones de número de filas por página
+        "searching": true, // Deshabilitar la búsqueda
+        "ordering": true, // Habilitar la ordenación
+        "info": true, // Mostrar información sobre la paginación
+        "autoWidth": true, // Ajustar el ancho de las columnas automáticamente
+        "language": {
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "info": "Mostrando página _PAGE_ de _PAGES_"
+        }
+    });
+});
 
 
 

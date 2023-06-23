@@ -105,7 +105,10 @@ public class CrearBasePmc {
         String ultimaFila = "9400SBHN" + fechaPrimerFila + cerosIzquierda(valueOf(this.contadorFilas), 7) + "0000000"
                 + cerosIzquierda(String.valueOf(df.format(montoTotalPrimerVto)).replace(",", ""), 16)
                 + cerosDerecha("", 234);
-
+        
+        System.out.println(String.valueOf(df.format(montoTotalPrimerVto)));
+        System.out.println("ultimaFila = " + ultimaFila);
+        
         this.escritor.escribir(ultimaFila, true);
 
         return new FileSystemResource(escritor.getArchivo());

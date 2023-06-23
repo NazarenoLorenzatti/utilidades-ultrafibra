@@ -115,7 +115,7 @@ public class AppController {
             @RequestParam("fechaSeleccionada") String fechaSeleccionada, HttpServletResponse response) throws IOException {
         var extractoDA = new ExtractoDebitosAutomaticos(opcionSeleccionada,
                 fechaSeleccionada, subirArchivo.getLectorExcel().getDatos(), subirArchivo.getLectorExcel().getCabeceros());
-        
+
         Workbook workbook = extractoDA.generarExtracto();
         // Configura la respuesta HTTP
         response.setContentType("application/vnd.ms-excel");
@@ -123,5 +123,7 @@ public class AppController {
         workbook.write(response.getOutputStream());
         workbook.close();
     }
+
+    
 
 }

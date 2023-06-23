@@ -159,11 +159,14 @@
             <version>1.4.9</version>
         </dependency>
 
-
-        
+        <!--DEPENDENCIA PARA CONTROL SNMP -->
+        <dependency>
+            <groupId>org.snmp4j</groupId>
+            <artifactId>snmp4j</artifactId>
+            <version>2.8.5</version>
+        </dependency>
         
     </dependencies>
-    
     <build>
         <plugins>
             <plugin>

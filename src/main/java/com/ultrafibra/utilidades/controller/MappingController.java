@@ -2,6 +2,8 @@ package com.ultrafibra.utilidades.controller;
 
 import com.ultrafibra.utilidades.DAO.insumosDAO.*;
 import com.ultrafibra.utilidades.DAO.tecnicoDAO.*;
+import com.ultrafibra.utilidades.domain.ticketbackup.TicketBackup;
+import com.ultrafibra.utilidades.utilidades.service.ticketBackup.BackupService;
 import jakarta.servlet.http.HttpSession;
 import java.io.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class MappingController {
 
     @Autowired
     private iTecnicoDao tecnicoDao;
+    @Autowired
+    private BackupService ticketService;
     @Autowired
     private iEventoDao eventoDao;
     @Autowired
@@ -75,10 +79,18 @@ public class MappingController {
         return "comercial/macroClick";
     }
 
+    @GetMapping("/backup/backup")
+    public String backup(HttpSession session) throws IOException {
+        session.setAttribute("listaDeTickets", ticketService.listarTickets());
+        session.setAttribute("cabecerosTicket", ticketService.cabecerosBackup());
+        return "backup/backup";
+    }
+
     @RequestMapping("/login")
     public String login() {
         return "login";
     }
+    
 
 //    @PostMapping("/login")
 //    public String loginSucces() {

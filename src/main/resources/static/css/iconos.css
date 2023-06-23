@@ -1,0 +1,70 @@
+.icon{
+     display: block;
+    width: 160px;
+    height: 160px;
+     background-size: cover;
+    transition: background-image 0.3s;
+}
+
+#alerta-icon {
+    background-image: url('/iconos/alertas.png');
+}
+
+#alerta-icon:hover {
+    background-image: url('/iconos/alertas-hoover.png');
+}
+
+#backup-icon {
+    background-image: url('/iconos/backups-tickets.png');
+}
+
+#backup-icon:hover {
+    background-image: url('/iconos/backups-tickets-hoover.png');
+}
+
+#insumos-icon {
+    background-image: url('/iconos/insumos.png');
+}
+
+#insumos-icon:hover {
+    background-image: url('/iconos/insumos-hoover.png');
+}
+
+#macroclick-icon {
+    background-image: url('/iconos/macroclick.png');
+}
+
+#macroclick-icon:hover {
+    background-image: url('/iconos/macroclick-hoover.png');
+}
+
+#debitosautomaticos-icon {
+    background-image: url('/iconos/debitos-automaticos.png');
+}
+
+#debitosautomaticos-icon:hover {
+    background-image: url('/iconos/debitos-automaticos-hoover.png');
+}
+#sirplus-icon {
+    background-image: url('/iconos/sirplus.png');
+}
+
+#sirplus-icon:hover {
+    background-image: url('/iconos/sirplus-hoover.png');
+}
+
+#banelco-icon {
+    background-image: url('/iconos/banelco.png');
+}
+
+#banelco-icon:hover {
+    background-image: url('/iconos/banelco-hoover.png');
+}
+
+#link-icon {
+    background-image: url('/iconos/homebanking-link.png');
+}
+
+#link-icon:hover {
+    background-image: url('/iconos/homebanking-link-hoover.png');
+}

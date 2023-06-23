@@ -1,11 +1,17 @@
-
 @import url('https://fonts.cdnfonts.com/css/proxima-nova-condensed');
 
-#navbar,#div-header{
+
+body {
+    font-size: 16px;
+    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+    color: white;
+}
+
+#navbar,#div-header, #main-header, #header-modal,#modal-body{
     background-color: #171C35;
 }
 
-#navbar,#boton-nav {
+#navbar,#boton-nav,#card-table, #miTabla,#section, .navbar-brand, #header-modal,#modal-body {
     color: white;
 }
 
@@ -22,60 +28,19 @@
     color: white;
 }
 
-#card-table, #miTabla{
-    color: white;
-}
-
-#section{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
-    letter-spacing: 2px;
-    color: white;
-}
-
-
-#main-header{
-    background-color: #171C35;
-}
-
-#boton{
-    font-size: 15px;
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
-    letter-spacing: 2px;
-    transform: scale(0.7);
-    padding: 50px;
-    border: solid 2px;
-    border-radius: 50%;
-    border-color: white;
-    color: white;
-}
-
-#boton:hover {
-    color: #31FB73;
-    border-color: #31FB73;
-    transition: transform 0.3s ease-in-out;
-}
-
-body {
-    font-size: 16px;
-}
 
 #btn, #section {
     font-size: 1.5em;
 }
 
-
 #hr {
     border-top: 4px solid white;
 }
 
-.navbar-brand{
-    color: white;
-}
-
 .vertical-line {
     border-left: 2px solid #57FF89;
-    height: 50px; /* ajusta la altura a tu necesidad */
-    margin: 0 20px; /* ajusta el margen a tu necesidad */
+    height: 50px; 
+    margin: 0 20px; 
 }
 
 #bg-tabla{
@@ -83,14 +48,7 @@ body {
     background-color: #2B304A;
 }
 
-#btn-upload, #btn-upload-control{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
-    letter-spacing: 3px;
-}
-
-
 #btn-upload:hover, #btn-upload-control:hover{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
     letter-spacing: 3px;
     background-color:  #57FF89;
     color: black;
@@ -117,7 +75,6 @@ body {
 }
 
 #btn-edicion{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
     letter-spacing: 3px;
     background: #171C35;
     border-bottom:   2px solid white;
@@ -163,10 +120,7 @@ body {
     border-bottom: 2px solid #57FF89;
 }
 
-#header-modal,#modal-body{
-    color: white;
-    background-color:  #171C35;
-}
+
 
 .custom-btn-label {
     font-size: 1.2rem; /* ajustar el tamaño según tu preferencia */
@@ -196,18 +150,15 @@ body {
     background: transparent linear-gradient(106deg, #4158F0 0%, #31FB73 100%) 0% 0% no-repeat padding-box;
 }
 
-#nombre-usuario {
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+#nombre-usuario, .navbar, #btn-cerrarSesion,#section {
     letter-spacing: 2px;
 }
 
-#botonesUpload, #tabla{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
+#botonesUpload, #tabla, #btn-upload, #btn-upload-control{
     letter-spacing: 3px;
 }
 
 #btn-cerrarSesion{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
     letter-spacing: 2px;
     color: #31FB73;
 }
@@ -223,7 +174,7 @@ body {
 
 footer {
     position: relative;
-    height: 200px; /* Definimos una altura fija para el footer */
+    height: 200px; 
 }
 
 .footer-background {
@@ -233,13 +184,12 @@ footer {
     width: 100%;
     height: 100%;
     background-image: url('/img/footer.png');
-    background-size: cover; /* Escala la imagen para cubrir todo el elemento sin distorsionarla */
-    background-position: center center; /* Centra la imagen */
+    background-size: cover; 
+    background-position: center center; 
 }
 
 #footer-plantilla{
     color: #171C35;
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
     line-height: 1.5;
 }
 
@@ -247,21 +197,16 @@ footer {
     transform: scale(0.8);
 }
 
-.navbar{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
-    letter-spacing: 2px;
-}
+
 
 #div-crear-insumo, #categoria, #titular{
     color: #05852F;
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 2px;
 }
 
 #tablas-font{
-    font-family: 'Proxima Nova Extra Condensed', sans-serif;
     letter-spacing: 2px;
 }
 
@@ -284,3 +229,20 @@ footer {
     display: none;
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+#tabla-upload2{
+    font-size: 14px;
+}
+
+#ticket{
+    color: #000;
+}
+
+.bold-azul{
+    color: #10617A;
+    font-weight: bold;
+}

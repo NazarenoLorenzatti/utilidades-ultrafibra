@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body id="bg-body">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        <div class="row p-1 mb-2" id="container-border"></div>
+
+        <nav class="navbar bg-body-tertiary mt-2">
+            <div class="container-fluid">
+                <a th:href="@{/backup/backup}" class="navbar-brand"><i class="fa-solid fa-arrow-left ms-4 me-2 fs-5"></i>Volver al Listado</a> 
+            </div> 
+        </nav>
+        
+        <div class="container-fluid">
+            <div class="row align-items-end">
+                <div class="col text-end">
+                     [[${indiceActual + 1}]] de [[${#lists.size(session.listaDeTickets)}]]
+                    <a th:href="@{/TicketAnterior/{idTicket}(idTicket=${ticket.getIdBackup()-1})}"
+                       class="btn btn-sm"><i class="fa-solid fa-circle-chevron-left fs-4" style="color: #ffffff"></i>
+                    </a> 
+                    <a th:href="@{/TicketSiguiente/{idTicket}(idTicket=${ticket.getIdBackup()+1})}"
+                       class="btn btn-sm"><i class="fa-solid fa-circle-chevron-right fs-4" style="color: #ffffff"></i>
+                    </a> 
+                </div>
+            </div>
+            <hr/>
+        </div>
+
+
+        <div  class="container-fluid ms-3">
+            <div class="row">
+                <div id="ticket" class="p-3 col-md-7 bg-light col-sm-12 mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-10">
+                                <h3 class="bold-azul">[[${ticket.getAsunto()}]] #[[${ticket.getTicketId()}]]</h3>
+                            </div>
+                            <div class="col-2">
+                                <span th:if="${ticket.getEtapaTicket() == 'Nuevo'}" class="badge text-bg-info fs-5">[[${ticket.getEtapaTicket()}]]</span>
+                                <span th:if='${ticket.getEtapaTicket() == "En Progreso"}' class="badge text-bg-warning fs-5">[[${ticket.getEtapaTicket()}]]</span>
+                                <span th:if='${ticket.getEtapaTicket() == "Resuelto"}' class="badge text-bg-succes fs-5">[[${ticket.getEtapaTicket()}]]</span>
+                                <span th:if='${ticket.getEtapaTicket() == "Cancelado"}' class="badge text-bg-danger fs-5">[[${ticket.getEtapaTicket()}]]</span>
+                            </div>
+                            <hr/>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Asignada a: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getAsignatario()}">Asignad a;</li>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Cliente: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getCliente().getNombreCliente()}">Nombre del Cliente</li>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Id en Odoo: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getCliente().getIdOdoo()}">Id del Cliente</li>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Creado El: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2 ">
+                                            <li class="list-group-item" th:text="${ticket.getFechaCreacion()}">Creado El:</li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Direccion del cliente: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getAsignatario()}">Asignad a;</li>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">DNI del cliente: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getCliente().getDniCliente()}">Dni del Cliente</li>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Tipo de Vale: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getTipoVale()}">Tipo de Vale</li>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mt-2 text-end">
+                                            <h5 class="bold-azul mb-3">Fecha de Cierre: </h5>
+                                        </div>
+                                        <div class="col-6 mt-2">
+                                            <li class="list-group-item" th:text="${ticket.getFechaCierre()}">Fecha de cierre:</li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>   
+                        <br/>
+                        <div class="row mt-4">
+                            <h4 class="bold-azul">Descripcion</h4>
+                            <hr/>
+                            <p th:text="${ticket.getDescripcion()}"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-5 col-md-5 col-sm-12 mb-5">
+                    <h5>Notas: </h5>
+                    <hr/>
+                    <ol class="list-group list-group-numbered">
+
+                        <li th:each="mensaje : ${ticket.getMensajes()}" class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div  class="fw-bold bold-azul" th:text="${mensaje.getCreador()}">creador</div>
+                                [[${mensaje.getContenido()}]]
+                            </div>
+                            <span class="badge bg-dark rounded-pill" th:text="${mensaje.getFechaDelMensaje()}">fecha del ticket</span>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>
