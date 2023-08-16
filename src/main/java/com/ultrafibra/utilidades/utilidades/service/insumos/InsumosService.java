@@ -35,7 +35,7 @@ public class InsumosService {
     @Autowired
     private iDepartamentoDao departamentoDao;
 
-    public List<Insumo> crearInsumo(String codigoBarras, String nombreInsumo, String descripcion, Date fecha,
+    public List<Insumo> crearInsumo(String codigoBarras, String nombreInsumo, int cantidad ,String descripcion, Date fecha,
             String idTitularStr, String idDepartamentoStr, String idCategoriaStr, String idSucursalStr) {
         Long idTitular = Long.parseLong(idTitularStr);
         Long idDepartamento = Long.parseLong(idDepartamentoStr);
@@ -45,6 +45,7 @@ public class InsumosService {
         insumoDao.save(new Insumo(
                 codigoBarras,
                 nombreInsumo,
+                cantidad,
                 descripcion,
                 fecha,
                 sucursalDao.findById(idSucursal).get(),
@@ -56,7 +57,7 @@ public class InsumosService {
         return insumoDao.findAll();
     }
 
-    public List<Insumo> editarInsumo(String idInsumoStr, String codigoBarras, String nombreInsumo, String descripcion, Date fecha,
+    public List<Insumo> editarInsumo(String idInsumoStr, String codigoBarras, String nombreInsumo, int cantidad, String descripcion, Date fecha,
             String idTitularStr, String idDepartamentoStr, String idCategoriaStr, String idSucursalStr) {
 
         Long idInsumo = Long.parseLong(idInsumoStr);
@@ -68,6 +69,7 @@ public class InsumosService {
         Insumo i = insumoDao.findById(idInsumo).get();
         i.setCodigoBarras(codigoBarras);
         i.setNombre_insumo(nombreInsumo);
+        i.setCantidad(cantidad);
         i.setDescripcion(descripcion);
         i.setFecha_compra(fecha);
         i.setSucursal(sucursalDao.findById(idSucursal).get());
@@ -79,7 +81,7 @@ public class InsumosService {
         return insumoDao.findAll();
     }
 
-    public List<Insumo> editarInsumoMasivo(String[] idInsumos, String codigoBarras, String nombreInsumo, String descripcion, Date fecha,
+    public List<Insumo> editarInsumoMasivo(String[] idInsumos, String codigoBarras, String nombreInsumo, int cantidad, String descripcion, Date fecha,
             String idTitularStr, String idDepartamentoStr, String idCategoriaStr, String idSucursalStr) {
 
         for (String id : idInsumos) {
@@ -92,6 +94,7 @@ public class InsumosService {
             Insumo i = insumoDao.findById(idInsumo).get();
             i.setCodigoBarras(codigoBarras);
             i.setNombre_insumo(nombreInsumo);
+            i.setCantidad(cantidad);
             i.setDescripcion(descripcion);
             i.setFecha_compra(fecha);
             i.setSucursal(sucursalDao.findById(idSucursal).get());
@@ -203,7 +206,7 @@ public class InsumosService {
             Long titularId = Long.parseLong(fila.get(7).replace(",00", ""));
             Long departamentoId = Long.parseLong(fila.get(8).replace(",00", ""));
 
-            Insumo i = new Insumo(fila.get(0), fila.get(1), fila.get(2),
+            Insumo i = new Insumo(fila.get(0), fila.get(1), Integer.valueOf(fila.get(2).replace(",00", "")), fila.get(3),
                     stringToSqlDate(fila.get(4)),
                     sucursalDao.findById(sucursalId).get(),
                     categoriaDao.findById(categoriaId).get(),
@@ -225,6 +228,7 @@ public class InsumosService {
             fila.add(i.getIdInsumo().toString());
             fila.add(i.getCodigoBarras());
             fila.add(i.getNombre_insumo());
+            fila.add(String.valueOf(i.getCantidad()));
             fila.add(i.getDescripcion());
             fila.add(i.getFecha_compra().toString());
             fila.add(i.getTitular().getNombre() + " " + i.getTitular().getApellido());

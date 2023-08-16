@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head th:replace="~{layout/plantilla :: head}"></head>
+
+    <body id="bg-body">
+        <section th:replace="~{layout/spinner :: spinner-frag}"></section>
+
+        <section th:replace="~{comercial/navbar-comercial :: navbar}"></section>  
+
+        <section th:replace="~{layout/importarTxt :: importar}"></section>  
+
+        <hr></hr>
+        <div class="container ">
+            <div class="row has-validation">
+                <div class="col-12">
+                    <form action="/comercial/repuestaDebitosExtracto" method="GET">
+                        <div class="container flex-column">
+                            <div class="col-12 d-flex justify-content-center align-content-center">
+                                <button id="btn-upload"  class="btn btn-light p-3 ps-5 pe-5" type="submit"> <i class="fas fa-file-download fa-2xl"></i> [[#{debitosAutomaticos.generarExtracto}]]</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr></hr>
+
+        <section th:replace="~{layout/layoutTabla :: layoutTabla}"></section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>

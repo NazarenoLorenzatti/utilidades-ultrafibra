@@ -327,13 +327,13 @@ public class CrearBaseLink {
         String fila1 = "HRPASCTRL" + fechaStr + "GK0" + filename + registros;
         fila1 = asignarEspacios(fila1, 74);
 
-        String fila2 = "LOTES" + "00001" + cerosIzquierda(valueOf(filas.size()), 8)
+        String fila2 = "LOTES" + "00001" + cerosIzquierda(valueOf(filas.size()+2), 8)
                 + cerosIzquierda(String.valueOf(df.format(montoTotalPrimerVto)).replace(",", ""), 18)
                 + cerosIzquierda(String.valueOf(df.format(montoTotalSegundoVto)).replace(",", ""), 18) + "000000000000000000";
 
         fila2 = asignarEspacios(fila2, 74);
 
-        String fila3 = "FINAL" + cerosIzquierda(valueOf(filas.size()), 8) + cerosIzquierda(String.valueOf(df.format(montoTotalPrimerVto)).replace(",", ""), 18)
+        String fila3 = "FINAL" + cerosIzquierda(valueOf(filas.size()+2), 8) + cerosIzquierda(String.valueOf(df.format(montoTotalPrimerVto)).replace(",", ""), 18)
                 + cerosIzquierda(String.valueOf(df.format(montoTotalSegundoVto)).replace(",", ""), 18) + "000000000000000000" + ultimaFecha;
 
         this.escritorControl.escribir(fila1, true);

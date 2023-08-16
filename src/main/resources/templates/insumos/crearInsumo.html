@@ -19,7 +19,7 @@
         <div  id="div-crear-insumo" class="container mb-5">
             <div class="row">
                 <div class="col"></div>
-                <div class="col-10">
+                <div class="col-8">
                     <form action="/guardarInsumo" method="POST">
                         <section class="row mt-2 g-3" th:fragment="crearModificarInsumo" id="modInsumo">
                             <div class="col-md-6">
@@ -37,13 +37,15 @@
                                     <textarea class="form-control" name="descripcion"  aria-describedby="inputGroup" th:placeholder="#{crearInsumo.placeholder.descripcion}"  id="descripcion" required></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-3"></div>
                             <div class="col-md-6">
                                 <label for="fecha" class="form-label">[[#{tablaInsumos.fecha}]]</label>
                                 <input type="date" class="form-control" id="fecha" name="fecha">
                             </div>
+                            <div class="col-md-6">
+                                <label for="cantidad" class="form-label">[[#{tablaInsumos.cantidad}]]</label>
+                                <input type="number" class="form-control" id="cantidad" name="cantidad">
+                            </div>
 
-                            <div class="col-md-3"></div>
 
                             <div class="col-md-3">
                                 <label for="titular" class="form-label">[[#{tablaInsumos.titular}]]</label>

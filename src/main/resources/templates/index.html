@@ -59,21 +59,15 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div sec:authorize="hasRole('ROLE_USER')" class="row">
-                    <br/>
-                    <hr id="hr"/>
-                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 p-3 d-flex align-items-center justify-content-center">
-                        <h3 id="section">[[#{index.seccion3}]]</h3>
-                    </div>
                     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 p-3 d-flex">
-                        <div class="align-self-center">
-                            <a   th:href="@{/insumos/insumos}">
-                                <i class="icon" id="insumos-icon"></i>
+                        <div class="text-left">
+                            <a th:href="@{/comercial/repuestaDebitos}">
+                                <i class="icon" id="respuesta-icon"></i>
                             </a>
                         </div>
                     </div>
                 </div>
+
                 <div sec:authorize="hasRole('ROLE_SUPPORT')" class="row">
                     <br/>
                     <hr id="hr"/>
@@ -91,6 +85,21 @@
                         <div class="align-self-center">
                             <a th:href="@{/backup/backup}">
                                 <i class="icon" id="backup-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_USER')" class="row">
+                    <br/>
+                    <hr id="hr"/>
+                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 p-3 d-flex align-items-center justify-content-center">
+                        <h3 id="section">[[#{index.seccion3}]]</h3>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 p-3 d-flex">
+                        <div class="align-self-center">
+                            <a   th:href="@{/insumos/insumos}">
+                                <i class="icon" id="insumos-icon"></i>
                             </a>
                         </div>
                     </div>

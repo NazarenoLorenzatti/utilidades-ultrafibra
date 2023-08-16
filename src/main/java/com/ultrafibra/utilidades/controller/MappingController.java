@@ -73,6 +73,11 @@ public class MappingController {
     public String debitosAutomaticos(Model model) throws IOException {
         return "comercial/debitosAutomaticos";
     }
+    
+        @GetMapping("/comercial/repuestaDebitos")
+    public String resumenDebitosAutomaticos(Model model) throws IOException {
+        return "comercial/repuestaDebitos";
+    }
 
     @GetMapping("/comercial/macroClick")
     public String macroClick(Model model) throws IOException {

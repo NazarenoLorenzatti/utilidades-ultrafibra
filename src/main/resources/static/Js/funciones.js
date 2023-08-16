@@ -397,7 +397,7 @@ function editarInsumo(row) {
     id.setAttribute("value", arrayCeldas[1]);
     codigoDeBarra.setAttribute("value", arrayCeldas[2]);
     nombreInsumo.setAttribute("value", arrayCeldas[3]);
-    descripcion.value = arrayCeldas[4];
+    descripcion.value = arrayCeldas[5];
     fecha.setAttribute("value", arrayCeldas[5]);
 }
 

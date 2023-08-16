@@ -22,9 +22,11 @@ public class Insumo implements Serializable {
 
     @Column(name = "nombre_insumo", nullable = false, unique = true)
     private String nombre_insumo;
-
+    
+     @Column(name = "cantidad")
+    private int cantidad;
+    
     private String descripcion;
-
 
     private Date fecha_compra;
 
@@ -46,10 +48,11 @@ public class Insumo implements Serializable {
 
     public Insumo() {
     }
-    
-    public Insumo(String codigoBarras, String nombre_insumo, String descripcion, Date fecha_compra, Sucursal sucursal, Categoria categoria, Titular titular, Departamento departamento) {
+
+    public Insumo(String codigoBarras, String nombre_insumo, int cantidad, String descripcion, Date fecha_compra, Sucursal sucursal, Categoria categoria, Titular titular, Departamento departamento) {
         this.codigoBarras = codigoBarras;
         this.nombre_insumo = nombre_insumo;
+        this.cantidad = cantidad;
         this.descripcion = descripcion;
         this.fecha_compra = fecha_compra;
         this.sucursal = sucursal;
@@ -58,5 +61,6 @@ public class Insumo implements Serializable {
         this.departamento = departamento;
     }
     
+
     
 }

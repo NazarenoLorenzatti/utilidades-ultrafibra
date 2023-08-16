@@ -11,6 +11,7 @@
                                     <th>#</th>
                                     <th th:text="#{tablaInsumos.codigoBarras}"></th>
                                     <th th:text="#{tablaInsumos.nombreInsumo}"></th>
+                                    <th th:text="#{tablaInsumos.cantidad}"></th>
                                     <th th:text="#{tablaInsumos.descripcion}"></th>
                                     <th th:text="#{tablaInsumos.fecha}"></th>
                                     <th th:text="#{tablaInsumos.titular}"></th>
@@ -26,6 +27,7 @@
                                     <td id="tdIdInsumo" th:text="${iter.count}" th:data-value="${insumo.getIdInsumo()}" name="idInsumo"></td>
                                     <td id="tdCodigoBarras" th:text="${insumo.getCodigoBarras()}" th:data-value="${insumo.getCodigoBarras()}">codigo barras</td>
                                     <td id="tdNombreInsumo" th:text="${insumo.getNombre_insumo()}" th:data-value="${insumo.getNombre_insumo()}">insumo</td>
+                                    <td id="tdNombreInsumo" th:text="${insumo.getCantidad()}" th:data-value="${insumo.getCantidad()}">Cantidad</td>
                                     <td id="tdDescripcion" th:text="${insumo.getDescripcion()}" th:data-value="${insumo.getDescripcion()}" >Descripcion</td>
                                     <td id="tdFecha" th:text="${insumo.getFecha_compra()}" th:data-value="${insumo.getFecha_compra()}">Fecha</td>
                                     <td id="tdTitular" th:text="${insumo.getTitular().getNombre()}" th:data-value="${insumo.getTitular().getIdTitular}">Titular</td>

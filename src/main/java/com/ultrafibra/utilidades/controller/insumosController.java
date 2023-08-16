@@ -138,33 +138,36 @@ public class insumosController {
     // ------------------------------------------------------------INSUMOS---------------------------------------------------------
     @PostMapping("/guardarInsumo")
     public String guardar(@RequestParam("codigoBarras") String codigoBarras, @RequestParam("nombreInsumo") String nombreInsumo,
+            @RequestParam("cantidad") int cantidad,
             @RequestParam("descripcion") String descripcion, @RequestParam("fecha") Date fecha, @RequestParam("titular") String idTitularStr,
             @RequestParam("departamento") String idDepartamentoStr, @RequestParam("categoria") String idCategoriaStr,
             @RequestParam("sucursal") String idSucursalStr, HttpSession session) throws IOException {
 
-        session.setAttribute("listaDeInsumos", is.crearInsumo(codigoBarras, nombreInsumo, descripcion, fecha,
+        session.setAttribute("listaDeInsumos", is.crearInsumo(codigoBarras, nombreInsumo, cantidad, descripcion, fecha,
                 idTitularStr, idDepartamentoStr, idCategoriaStr, idSucursalStr));
         return "insumos/insumos";
     }
 
     @PostMapping("/editarInsumo")
-    public String editarInsumo(@RequestParam("idModificarInsumo") String idInsumoStr, @RequestParam("codigoBarras") String codigoBarras, @RequestParam("nombreInsumo") String nombreInsumo,
+    public String editarInsumo(@RequestParam("idModificarInsumo") String idInsumoStr, 
+            @RequestParam("codigoBarras") String codigoBarras, @RequestParam("nombreInsumo") String nombreInsumo, @RequestParam("cantidad") int cantidad,
             @RequestParam("descripcion") String descripcion, @RequestParam("fecha") Date fecha, @RequestParam("titular") String idTitularStr,
             @RequestParam("departamento") String idDepartamentoStr, @RequestParam("categoria") String idCategoriaStr,
             @RequestParam("sucursal") String idSucursalStr, HttpSession session) throws IOException {
 
         session.setAttribute("listaDeInsumos", is.editarInsumo(idInsumoStr, codigoBarras,
-                nombreInsumo, descripcion, fecha, idTitularStr, idDepartamentoStr, idCategoriaStr, idSucursalStr));
+                nombreInsumo, cantidad, descripcion, fecha, idTitularStr, idDepartamentoStr, idCategoriaStr, idSucursalStr));
         return "insumos/insumos";
     }
 
     @PostMapping("/editarInsumo-masivo")
-    public String editarInsumoMasivo(@RequestParam("arrayId") String[] idInsumos, @RequestParam("codigoBarras") String codigoBarras, @RequestParam("nombreInsumo") String nombreInsumo,
+    public String editarInsumoMasivo(@RequestParam("arrayId") String[] idInsumos, @RequestParam("codigoBarras") String codigoBarras, 
+            @RequestParam("nombreInsumo") String nombreInsumo,@RequestParam("cantidad") int cantidad,
             @RequestParam("descripcion") String descripcion, @RequestParam("fecha") Date fecha, @RequestParam("titular") String idTitularStr,
             @RequestParam("departamento") String idDepartamentoStr, @RequestParam("categoria") String idCategoriaStr,
             @RequestParam("sucursal") String idSucursalStr, HttpSession session) throws IOException {
 
-        session.setAttribute("listaDeInsumos", is.editarInsumoMasivo(idInsumos, codigoBarras, nombreInsumo,
+        session.setAttribute("listaDeInsumos", is.editarInsumoMasivo(idInsumos, codigoBarras, nombreInsumo, cantidad,
                 descripcion, fecha, idTitularStr, idDepartamentoStr, idCategoriaStr, idSucursalStr));
         return "insumos/insumos";
     }

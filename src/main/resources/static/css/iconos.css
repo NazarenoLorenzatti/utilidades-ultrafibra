@@ -68,3 +68,11 @@
 #link-icon:hover {
     background-image: url('/iconos/homebanking-link-hoover.png');
 }
+
+#respuesta-icon{
+    background-image: url('/iconos/respuesta-debitos.png');
+}
+
+#respuesta-icon:hover{
+    background-image: url('/iconos/respuesta-debitos-hoover.png');
+}

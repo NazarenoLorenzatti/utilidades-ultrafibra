@@ -8,4 +8,5 @@ public interface iSucursalDao extends JpaRepository<Sucursal, Long> {
 
     @Override
     public Optional<Sucursal> findById(Long id);
+    
 }

@@ -40,8 +40,6 @@ public class CrearBasePmc {
 
         String primerFila = "0400SBHN" + fechaPrimerFila + cerosDerecha("", 264);
         this.escritor.escribir(primerFila, true);
-        int contador = 0;
-        
 
         //Filas
         for (int j = 0; j < filas.size(); j++) {
@@ -99,10 +97,10 @@ public class CrearBasePmc {
                     + asignarEspacios(numeroFactura, 60) + cerosDerecha("", 29);
             this.escritor.escribir(filaArchivo, true);
             
-//            System.out.println("Una nueva fila cargada " + contador++);
+            System.out.println("Una nueva fila cargada " + this.montoTotalPrimerVto);
         }
 
-        String ultimaFila = "9400SBHN" + fechaPrimerFila + cerosIzquierda(valueOf(this.contadorFilas), 7) + "0000000"
+        String ultimaFila = "9400SBHN" + fechaPrimerFila + cerosIzquierda(String.valueOf(filas.size()), 7) + "0000000"
                 + cerosIzquierda(String.valueOf(df.format(montoTotalPrimerVto)).replace(",", ""), 16)
                 + cerosDerecha("", 234);
         
@@ -409,8 +407,8 @@ public class CrearBasePmc {
                 break;
         }
 
-    }
-
+    }    
+        
     private void establecerMontoPrimerVto(String celda, String totalAdeudado, String totalConRecargo) {
         totalAdeudado = totalAdeudado.replace(",", ".");
         totalConRecargo = totalConRecargo.replace(",", ".");
